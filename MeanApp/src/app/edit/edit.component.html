@@ -1,0 +1,21 @@
+<form (submit)="onSubmit()">
+    <!-- use the json pipe to see how newTask changes in real time -->
+
+
+    <p>{{ pet | json }}</p>
+    Pet name:
+    <input type="text" name="name" [(ngModel)]="pet.name"  />
+    <br>
+    Pet type:
+    <input type="text" name="cuisine" [(ngModel)]="pet.type" />
+    <br>
+    Description:
+    <input type="text" name="cuisine" [(ngModel)]="pet.desc" />
+    <br>
+    <!-- Add a cancel button that links back to the home component -->
+   
+    <input type="submit" value="Edit" />
+    
+</form>
+<button [routerLink]="['/']">Cancel</button>
+<p *ngIf="error">{{error}}</p>

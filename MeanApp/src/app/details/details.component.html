@@ -1,0 +1,10 @@
+
+<p>Details about {{pet?.name}}</p>
+<br>
+<p>Pet type: {{pet?.type}}</p>
+<br>
+<p>Description: {{pet?.desc}}</p>
+
+<button (click)="removepet(pet)">Delete</button>
+<button [routerLink]="['/']">Cancel </button>
+<p *ngIf="error">{{error}}</p>
