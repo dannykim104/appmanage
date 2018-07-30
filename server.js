@@ -22,4 +22,4 @@ routes_setter(app);
 
 app.listen(8000, function() {
     console.log('Listening to port 8000');
-})
+});

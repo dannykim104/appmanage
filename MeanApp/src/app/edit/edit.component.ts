@@ -8,27 +8,28 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
   styleUrls: ['./edit.component.css']
 })
 export class EditComponent implements OnInit {
-  petId: string
+  appId: string
   error: string 
-  pet: any
+  app: any
   constructor(private _httpservice: HttpService, private _route: ActivatedRoute, private _router: Router) { }
 
   ngOnInit() {
     this._route.params.subscribe(data => {
       console.log("route params", data);
-      this.petId = data.id;
-      this.getOnePet();
-  })
-  this.pet = {name: "" , type: "", desc: ""}
+      this.appId = data.id;
+      this.getOneApp();
+    })
+    console.log(this.app)
+ //function call
   }
 
-  getOnePet(){
-    let obsv = this._httpservice.GetOnePet(this.petId);
+  getOneApp(){
+    let obsv = this._httpservice.GetOneApp(this.appId);
     obsv.subscribe(data => {
       console.log("Got data from get one", data)
       if (data['message'] == "Success"){
-        this.pet = data['data']
-        console.log(this.pet)
+        this.app = data['data']
+        console.log(this.app)
       }
       else{
         this.error = "sorry did not load"
@@ -38,11 +39,11 @@ export class EditComponent implements OnInit {
   }
 
   onSubmit(){
-    let obsv = this._httpservice.Alter(this.petId, this.pet);
+    let obsv = this._httpservice.Alter(this.appId, this.app);
     obsv.subscribe(data => {
       console.log("Got data from get one", data)
       if (data['message'] == "Success"){
-        this.pet = data['data']
+        this.app = data['data']
         this._router.navigate(['/'])
       }
       else{

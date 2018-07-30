@@ -1,0 +1,42 @@
+.title{
+    margin-top: 4%;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+.mainimage{
+    width: 70%;
+    height: 40%;
+    margin-left: 5%;
+    margin-right: 30%;
+}
+
+.parent{
+    background-color: lightgray;
+}
+
+.button4{
+    display:inline-block;
+    padding:0.46em 1.6em;
+    border:0.1em solid #000000;
+    margin:0 0.2em 0.2em 0;
+    border-radius:0.12em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    font-weight:300;
+    color:#000000;
+    text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
+    background-color:#42cc8c;
+    text-align:center;
+    transition: all 0.15s;
+    margin-left: 30%;
+    width: 200px;
+    height: 50px;
+}
+    
+.button4:hover{
+    text-shadow: 0 0 2em rgba(255,255,255,1);
+    color:#FFFFFF;
+    border-color:#FFFFFF;
+}

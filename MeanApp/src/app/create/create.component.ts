@@ -7,18 +7,18 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
-  newPet: any 
+  newApp: any 
   error: string 
 
   constructor(private _httpservice: HttpService, private _route: ActivatedRoute, private _router: Router) { }
 
   ngOnInit() {
       console.log("reached create.ts")
-      this.newPet = {name: "", type: "", desc: ""}
+      this.newApp = {title: "", imageURL: "", desc: "", price: ""}
   }
 
   onSubmit(data){
-      let obsv = this._httpservice.CreatePet(this.newPet);
+      let obsv = this._httpservice.CreateApp(this.newApp);
       obsv.subscribe(data => {
           if (data['message'] == "Success"){
             this._router.navigate(['/'])

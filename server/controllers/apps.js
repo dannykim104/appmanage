@@ -1,11 +1,11 @@
 var mongoose = require('mongoose');
 
-var Pet = mongoose.model('Pet');
+var App = mongoose.model('App');
 
 module.exports = {
     GetAll: function(req, res) {
         console.log("Reached the getall request");
-        Pet.find({}, function(err, data) {
+        App.find({}).sort('-likes').exec(function(err, data) {
             if (err) {
                 console.log(err); 
                 res.json({message: "Error", err: err}); 
@@ -15,12 +15,13 @@ module.exports = {
             }                    
         }) 
     },
+    
 
     add: function(req, res) {
         console.log("Post Data:", req.body)
-        Pet.create(req.body, function(err, data) {
+        App.create(req.body, function(err, data) {
             if (err) {
-                console.log("Reached the add route")
+                console.log("Reached the add route", err)
                 res.json({message: "Error", err: err}); 
             } else {
                 res.json({message: "Success", data: data}) 
@@ -30,7 +31,7 @@ module.exports = {
 
     getOne: function(req, res) {
         console.log("Reached the getall request")
-        Pet.findOne({_id: req.params.id}, function(err, data) {
+        App.findOne({_id: req.params.id}, function(err, data) {
             if (err) {
                 console.log(err); 
                 res.json({message: "Error", err: err}); 
@@ -43,7 +44,7 @@ module.exports = {
 
     alter: function(req, res) {
         console.log("Post Data:", req.body)
-        Pet.update({_id: req.params.id}, {$set: {name: req.body.name , type: req.body.type, desc: req.body.desc}}, function(err, data) {
+        App.update({_id: req.params.id}, {$set: {title: req.body.title , price: req.body.price, desc: req.body.desc}}, function(err, data) {
             if (err) {
                 console.log("Reached the add route")
                 res.json({message: "Error", err: err}); 
@@ -55,7 +56,7 @@ module.exports = {
     )},
 
     removepet: function(req, res) {
-        Pet.findOneAndRemove({_id: req.params.id}, function(err, data){
+        App.findOneAndRemove({_id: req.params.id}, function(err, data){
             if (err) {
                 console.log(err); 
                 res.json({message: "Error", err: err}); 
@@ -63,6 +64,18 @@ module.exports = {
                 res.json({message: "Success", data: data}) 
             }                    
         }) 
+    },
+
+    addlike: function(req, res) {
+        console.log("Post Data:", req.params.id)
+        App.findOneAndUpdate({_id: req.params.id}, {$inc: {likes:1 }}, function(err, data) {
+            if (err) {
+                console.log("Reached the add route")
+                res.json({message: "Error", err: err}); 
+            } else {
+                res.json({message: "Success", data: data}) 
+            } 
+        })
     },
 
 }

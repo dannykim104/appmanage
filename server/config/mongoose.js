@@ -7,7 +7,7 @@ var fs = require('fs');
 var path = require('path');
 
 // Connecting our monogoose
-mongoose.connect('mongodb://localhost/pet');
+mongoose.connect('mongodb://localhost/app');
  //  <----- CHANGE DB NAME !
 
 // HOW WOULD I WRITE THIS WITHOUT using PATH ? :-\

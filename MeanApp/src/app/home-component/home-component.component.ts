@@ -6,15 +6,18 @@ import { HttpService } from '../http.service';
   styleUrls: ['./home-component.component.css']
 })
 export class HomeComponentComponent implements OnInit {
-  pets: [any]
+  apps: [any]
+  appId: string
   error: string 
+  app: any
+
   constructor(private _httpservice: HttpService) { }
 
   ngOnInit() {
-      this._httpservice.GetAllPet().subscribe(data => {
+      this._httpservice.GetAllApps().subscribe(data => {
         if (data['message'] == "Success"){
           console.log(data)
-          this.pets = data['data']
+          this.apps = data['data']
         }
         else{
             this.error = "sorry did not load"
@@ -22,7 +25,6 @@ export class HomeComponentComponent implements OnInit {
 
       })
   }
-
   
 
 }

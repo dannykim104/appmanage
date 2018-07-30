@@ -5,8 +5,12 @@ import { HttpService } from './http.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
+
 export class AppComponent {
   title = 'app';
-
-  constructor(private _httpservice: HttpService) {}
+  fullImagePath: string;
+  constructor(private _httpservice: HttpService) {
+    this.fullImagePath = '/assets/appstorelogo3d.png'
+  }
 }

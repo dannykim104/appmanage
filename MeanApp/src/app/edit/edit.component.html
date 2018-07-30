@@ -1,21 +1,38 @@
-<form (submit)="onSubmit()">
-    <!-- use the json pipe to see how newTask changes in real time -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <title>Edit Pet Data</title>
+    </head>
+    <body>
+      <div class="parent">
+        <form (submit)="onSubmit()">
+            <!-- use the json pipe to see how newTask changes in real time -->
+            <div class="inputbox" >
+                App Title:
+                <input type="text" class="inputchange" name="title" [(ngModel)]="app.title">
+            </div>
+            <br>
+            <div class="inputbox" >
+                App Price:
+                <input type="text" class="inputchange2" name="price"  [(ngModel)]="app.price" />
+            </div>
+            <br>
+            <div class="inputbox3">
+                Description:
+                <input type="text" class="inputchange3" name="desc"  [(ngModel)]="app.desc" />
+            </div>
+            <br>
+            <!-- Add a cancel button that links back to the home component -->
+        
+            <input class="button4" type="submit" value="Edit" />
 
-
-    <p>{{ pet | json }}</p>
-    Pet name:
-    <input type="text" name="name" [(ngModel)]="pet.name"  />
-    <br>
-    Pet type:
-    <input type="text" name="cuisine" [(ngModel)]="pet.type" />
-    <br>
-    Description:
-    <input type="text" name="cuisine" [(ngModel)]="pet.desc" />
-    <br>
-    <!-- Add a cancel button that links back to the home component -->
-   
-    <input type="submit" value="Edit" />
-    
-</form>
-<button [routerLink]="['/']">Cancel</button>
-<p *ngIf="error">{{error}}</p>
+        </form>
+        <button class="button4" [routerLink]="['/']">Cancel</button>
+        <p *ngIf="error">{{error}}</p>
+      </div>
+    </body>
+</html>       

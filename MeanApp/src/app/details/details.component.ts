@@ -8,35 +8,37 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
-  petId: string
+  appId: string
   error: string
-  pet: any
+  app: any
+
   constructor(private _httpservice: HttpService, private _route: ActivatedRoute, private _router: Router) { }
 
   ngOnInit() {
       this._route.params.subscribe(data => {
         console.log("route params", data);
-        this.petId = data.id;
-        this.getOnePet();
+        this.appId = data.id;
+        this.getOneApp();
       })
   }
 
 
-  getOnePet(){
-    let obsv = this._httpservice.GetOnePet(this.petId);
+  getOneApp(){
+    let obsv = this._httpservice.GetOneApp(this.appId);
     obsv.subscribe(data => {
       console.log("Got data from get one", data)
       if (data['message'] == "Success"){
-        this.pet = data['data']
-        console.log(this.pet)
+        this.app = data['data']
+
+        console.log(this.app)
       }
       else{
         this.error = "sorry did not load"
       }
     })
   }
-  removepet(pet){
-    this._httpservice.RemovePet(pet._id).subscribe(data => {
+  removeapp(app){
+    this._httpservice.RemoveApp(app._id).subscribe(data => {
       console.log("deleting quote data", data);
       if (data['message'] == "Success"){
         this._router.navigate(['/'])
@@ -45,6 +47,19 @@ export class DetailsComponent implements OnInit {
         this.error = "sorry did not delete"
     }
     })
+}
+
+incrementlike(app, id){
+  this._httpservice.incrementlike(this.appId, this.app).subscribe(data => {
+    console.log("deleting quote data", data);
+    if (data['message'] == "Success"){
+
+      this.app.likes += 1
+    }
+    else{
+      this.error = "sorry did not increment"
+  }
+  })
 }
 
 }

@@ -1,8 +1,19 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-      Pet Shelter
-  </h1>
-
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <title>Root</title>
+</head>
+<body>
+  <div class="parent">
+  <img [src]="fullImagePath" class="mainimage">
+  <button [routerLink]="['create']" class="button4">Add an App</button>
 <router-outlet></router-outlet>
+</div> 
+</body>
+</html>
